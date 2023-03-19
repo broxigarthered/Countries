@@ -99,8 +99,7 @@
 		3F54009D29C74ADA00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				3F54009E29C74ADA00E2709A /* AppDelegate.swift */,
-				3F5400A029C74ADA00E2709A /* SceneDelegate.swift */,
+				3F5400CE29C75D1800E2709A /* Application */,
 				3F5400A229C74ADA00E2709A /* ViewController.swift */,
 				3F5400A429C74ADA00E2709A /* Main.storyboard */,
 				3F5400A729C74ADB00E2709A /* Assets.xcassets */,
@@ -125,6 +124,15 @@
 				3F5400C129C74ADC00E2709A /* CountriesUITestsLaunchTests.swift */,
 			);
 			path = CountriesUITests;
+			sourceTree = "<group>";
+		};
+		3F5400CE29C75D1800E2709A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3F54009E29C74ADA00E2709A /* AppDelegate.swift */,
+				3F5400A029C74ADA00E2709A /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
