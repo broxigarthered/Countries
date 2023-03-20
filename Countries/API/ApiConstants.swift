@@ -9,9 +9,9 @@ import Foundation
 
 //https://excitel-countries.azurewebsites.net/countries
 struct ApiConstants {
-    static let baseUrl = "https://excitel-countries.azurewebsites.net/"
+    static let baseUrl = "https://excitel-countries.azurewebsites.net"
     
     struct Countries {
-        static let countries = "countries"
+        static let countries = "/countries"
     }
 }
