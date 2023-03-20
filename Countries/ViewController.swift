@@ -14,12 +14,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let session = URLSession(configuration: .default)
-        let httpClient = HttpClient(session: session)
+        let httpClient = NetworkManager(session: session)
         let countriesService = CountriesAPI(httpClient: httpClient)
-        countriesService.getCountries { result in
+//        countriesService.getCountries { result in
+//            switch result {
+//            case .success(let success):
+//                print("UDRI bache \(success)")
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
+        
+        countriesService.testGetCountries { result in
             switch result {
             case .success(let success):
-                print("UDRI bache \(success)")
+                print("Success - \(success)")
             case .failure(let failure):
                 print(failure)
             }

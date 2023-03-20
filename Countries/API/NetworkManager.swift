@@ -22,23 +22,76 @@ protocol URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
 
-class HttpClient {
+protocol HttpRequestable {
+    typealias Completion = (_ data: Data?, _ error: NetworkError?) -> Void
+    func request(endpoint: Endpoint, completion: @escaping Completion)
     
-    typealias completeClosure = ( _ data: Data?, _ error: Error?)->Void
+    
+    // TODO: choose one of both
+    typealias SecondCompletion = (_ result: Result<Data, NetworkError>) -> Void
+    func secondRequest(endpoint: Endpoint, completion: @escaping SecondCompletion)
+}
+
+class NetworkManager: HttpRequestable {
+    func secondRequest(endpoint: Endpoint, completion: @escaping SecondCompletion) {
+        guard let url = URL(string: endpoint.baseUrl + endpoint.endpoint) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = endpoint.method.rawValue
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.invalidResponse))
+                return
+            }
+            guard 200..<300 ~= response.statusCode else {
+                completion(.failure(NetworkError.error(statusCode: response.statusCode, data: data)))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(NetworkError.invalidServerData))
+                return
+            }
+            completion(.success(data))
+        }
+        
+        task.resume()
+    }
+    
+    func request(endpoint: Endpoint, completion: @escaping (Data?, NetworkError?) -> Void) {
+        guard let url = URL(string: endpoint.baseUrl + endpoint.endpoint) else {
+            completion(nil, .invalidURL)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = endpoint.method.rawValue
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse else {
+                return completion(nil, NetworkError.invalidResponse)
+                
+            }
+            
+            guard 200..<300 ~= response.statusCode else {
+                completion(nil, NetworkError.error(statusCode: response.statusCode, data: data))
+                return
+            }
+            
+            completion(data, nil)
+        }
+        task.resume()
+    }
+    
+    
+//    typealias completeClosure = ( _ data: Data?, _ error: Error?)->Void
+    typealias Completion = (_ data: Data?, _ error: NetworkError?) -> Void
 
     private let session: URLSessionProtocol
     
     init(session: URLSessionProtocol) {
         self.session = session
-    }
-    
-    func get(url: URL, callback: @escaping completeClosure) {
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        let task = session.dataTask(with: request) { (data, response, error) in
-            callback(data, error)
-        }
-        task.resume()
     }
 
 }
@@ -52,76 +105,3 @@ extension URLSession: URLSessionProtocol {
 }
 
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
-
-
-// MARK: Countries API - move to other file - CountriesAPI
-
-// MARK: - Countries Service
-protocol CountriesService {
-    func getCountries(completion: @escaping (Result<[Country], Error>) -> Void)
-}
-
-class CountriesAPI: CountriesService {
-    
-    private let httpClient: HttpClient?
-    
-    init(httpClient: HttpClient) {
-        self.httpClient = httpClient
-    }
-    
-    func getCountries(completion: @escaping (Result<[Country], Error>) -> Void) {
-        let session = URLSession(configuration: .default)
-        let client = HttpClient(session: session)
-        // TODO: Extract this url to an enum
-        let url = URL(string: "https://excitel-countries.azurewebsites.net/countries")!
-        
-        client.get(url: url) { data, error in
-            guard let data = data else { return }
-            DispatchQueue.main.async {
-                // TODO: decode it to a response
-                do {
-                    let countries = try JSONDecoder().decode([Country].self, from: data)
-                    print(countries)
-                    completion(.success(countries))
-                } catch {
-                    print("Error while decoding Country object \(error.localizedDescription)")
-                    print(String(describing: error))
-                }
-            }
-        }
-    }
-    
-}
-
-struct Country: Decodable {
-    let capitalName: String
-    let code: String
-    let flag: String
-    let latLng: [Double]
-    let name: String
-    let population: Int
-    let region: String
-    let subregion: String
-}
-
-
-//class APIManager: UserService {
-//
-//    func fetchUser(completion: @escaping (Result<User, Error>) -> Void) {
-//
-//        let url = URL(string: "https://reqres.in/api/users/2")!
-//
-//        URLSession.shared.dataTask(with: url) { data, res, error in
-//            guard let data = data else { return }
-//            DispatchQueue.main.async {
-//                if let user = try? JSONDecoder().decode(UserResponse.self, from: data).data {
-//                    completion(.success(user))
-//                } else {
-//                    completion(.failure(NSError()))
-//                }
-//            }
-//        }.resume()
-//    }
-//}
-
-
