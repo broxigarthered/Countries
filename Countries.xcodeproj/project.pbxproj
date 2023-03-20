@@ -16,6 +16,7 @@
 		3F5400B629C74ADC00E2709A /* CountriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400B529C74ADC00E2709A /* CountriesTests.swift */; };
 		3F5400C029C74ADC00E2709A /* CountriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400BF29C74ADC00E2709A /* CountriesUITests.swift */; };
 		3F5400C229C74ADC00E2709A /* CountriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400C129C74ADC00E2709A /* CountriesUITestsLaunchTests.swift */; };
+		3F5400D129C75E7400E2709A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400D029C75E7400E2709A /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3F5400BB29C74ADC00E2709A /* CountriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5400BF29C74ADC00E2709A /* CountriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesUITests.swift; sourceTree = "<group>"; };
 		3F5400C129C74ADC00E2709A /* CountriesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F5400D029C75E7400E2709A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		3F54009D29C74ADA00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				3F5400CF29C75D6400E2709A /* API */,
 				3F5400CE29C75D1800E2709A /* Application */,
 				3F5400A229C74ADA00E2709A /* ViewController.swift */,
 				3F5400A429C74ADA00E2709A /* Main.storyboard */,
@@ -133,6 +136,14 @@
 				3F5400A029C74ADA00E2709A /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		3F5400CF29C75D6400E2709A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3F5400D029C75E7400E2709A /* NetworkManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5400D129C75E7400E2709A /* NetworkManager.swift in Sources */,
 				3F5400A329C74ADA00E2709A /* ViewController.swift in Sources */,
 				3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */,
 				3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */,

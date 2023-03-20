@@ -12,6 +12,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let session = URLSession(configuration: .default)
+        let httpClient = HttpClient(session: session)
+        let countriesService = CountriesAPI(httpClient: httpClient)
+        countriesService.getCountries { result in
+            switch result {
+            case .success(let success):
+                print("UDRI bache \(success)")
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 
 
