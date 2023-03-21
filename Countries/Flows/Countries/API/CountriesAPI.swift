@@ -13,9 +13,9 @@ protocol CountriesService {
 
 class CountriesAPI: CountriesService {
 
-    private let httpClient: NetworkManager?
+    private let httpClient: HttpRequestable?
     
-    init(httpClient: NetworkManager) {
+    init(httpClient: HttpRequestable) {
         self.httpClient = httpClient
     }
      

@@ -54,11 +54,14 @@ final class NetworkManagerTests: XCTestCase {
     let session = MockURLSession()
     
     override func setUpWithError() throws {
-        try super.setUpWithError()
         networkManager = NetworkManager(session: session)
+        
+        try super.setUpWithError()
     }
     
     override func tearDownWithError() throws {
+        networkManager = nil
+        
         try super.tearDownWithError()
     }
     

@@ -16,7 +16,7 @@ final class NetworkErrorTests: XCTestCase {
         XCTAssertEqual(NetworkError.invalidURL.description, "The url was invalid.")
         XCTAssertEqual(NetworkError.invalidServerData.description, "Couldn't load data from server.")
         XCTAssertEqual(NetworkError.invalidResponse.description, "Invalid response.")
-        XCTAssertEqual(NetworkError.invalidDecoding(error: "missing field").description, "There was a problem parsing the json data - missing field")
+        XCTAssertEqual(NetworkError.invalidDecoding(error: "missing field").description, "There was a problem parsing the json data.")
         XCTAssertEqual(NetworkError.generic(message: "An error occurred").description, "An error occured: An error occurred")
     }
     

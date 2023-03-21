@@ -24,14 +24,14 @@ protocol URLSessionProtocol {
 
 protocol HttpRequestable {
     
-    typealias SecondCompletion = (_ result: Result<Data, NetworkError>) -> Void
+    typealias Completion = (_ result: Result<Data, NetworkError>) -> Void
     
-    func request(endpoint: Endpoint, completion: @escaping SecondCompletion)
+    func request(endpoint: Endpoint, completion: @escaping Completion)
     
 }
 
 class NetworkManager: HttpRequestable {
-    func request(endpoint: Endpoint, completion: @escaping SecondCompletion) {
+    func request(endpoint: Endpoint, completion: @escaping Completion) {
         guard let url = URL(string: endpoint.baseUrl + endpoint.endpoint) else {
             completion(.failure(NetworkError.invalidURL))
             return

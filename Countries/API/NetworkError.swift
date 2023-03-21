@@ -31,7 +31,8 @@ extension NetworkError: CustomStringConvertible {
         case .invalidResponse:
             return ("Invalid response.")
         case .invalidDecoding(let error):
-            return ("There was a problem parsing the json data - \(error)")
+            print(error)
+            return ("There was a problem parsing the json data.")
         case .generic(let message):
             return ("An error occured: \(message)")
         }
