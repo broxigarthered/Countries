@@ -65,7 +65,7 @@ extension CountriesViewController: UITableViewDataSource {
         }
         
         if let model = viewModel?.countries.value[indexPath.row] {
-            cell.update(with: model.name, imageURLString: model.flag)
+            cell.update(with: model.name)
         }
         
         return cell

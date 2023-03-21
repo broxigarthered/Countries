@@ -17,35 +17,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="bVd-nT-SQN">
-                        <rect key="frame" x="8" y="12" width="300" height="74"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-tV-NDz">
-                                <rect key="frame" x="0.0" y="0.0" width="70" height="74"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="DPO-tV-NDz" secondAttribute="height" multiplier="35:37" id="C9H-nE-cu3"/>
-                                    <constraint firstAttribute="width" constant="70" id="ktR-Kc-LuA"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYA-PA-jdV">
-                                <rect key="frame" x="84" y="0.0" width="216" height="74"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYA-PA-jdV">
+                        <rect key="frame" x="12" y="12" width="296" height="75"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bVd-nT-SQN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="999" constant="12" id="Bu1-gi-vZO"/>
-                    <constraint firstItem="bVd-nT-SQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="N1D-TC-gxq"/>
-                    <constraint firstAttribute="trailing" secondItem="bVd-nT-SQN" secondAttribute="trailing" constant="12" id="NFv-j9-fDk"/>
-                    <constraint firstAttribute="bottom" secondItem="bVd-nT-SQN" secondAttribute="bottom" priority="999" constant="13" id="t1i-gU-dJw"/>
+                    <constraint firstAttribute="bottom" secondItem="zYA-PA-jdV" secondAttribute="bottom" constant="12" id="lez-TJ-DuF"/>
+                    <constraint firstItem="zYA-PA-jdV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="pHD-Zx-fck"/>
+                    <constraint firstItem="zYA-PA-jdV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="tGK-CL-a9O"/>
+                    <constraint firstAttribute="trailing" secondItem="zYA-PA-jdV" secondAttribute="trailing" constant="12" id="x5a-Z2-Vju"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="flagImageView" destination="DPO-tV-NDz" id="sEG-sV-imI"/>
                 <outlet property="titleLabel" destination="zYA-PA-jdV" id="mG8-do-DJG"/>
             </connections>
             <point key="canvasLocation" x="25.954198473282442" y="5.9859154929577469"/>
