@@ -28,6 +28,13 @@ class ViewController: UIViewController {
             value == true ? LoadingView.show() : LoadingView.hide()
         }
         
+        viewModel?.countries.observe(on: self, observerBlock: { countries in
+            for country in countries {
+                print(country.population)
+                print(country.flag)
+            }
+        })
+        
     }
 
 }

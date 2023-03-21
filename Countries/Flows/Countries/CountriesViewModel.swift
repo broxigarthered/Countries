@@ -16,6 +16,8 @@ class CountriesViewModel {
     
     private let countriesService: CountriesService
     let isLoading: Observable<Bool> = Observable(false)
+    let countries: Observable<[Country]> = Observable([])
+    let error: Observable<String> = Observable("")
     
     init(apiService: CountriesService) {
         countriesService = apiService
@@ -31,9 +33,11 @@ extension CountriesViewModel: CountriesViewModelInput {
             self?.isLoading.value = false
             switch result {
             case .success(let countries):
-                print("Success - \(countries)")
-            case .failure(let failure):
-                print(failure)
+                self?.countries.value = countries.sorted(by: { c1, c2 in
+                    c1.population > c2.population
+                })
+            case .failure(let error):
+                self?.error.value = error.description
             }
         }
     }
