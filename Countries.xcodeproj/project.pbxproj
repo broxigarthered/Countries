@@ -14,7 +14,6 @@
 		3F5400A629C74ADA00E2709A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5400A429C74ADA00E2709A /* Main.storyboard */; };
 		3F5400A829C74ADB00E2709A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5400A729C74ADB00E2709A /* Assets.xcassets */; };
 		3F5400AB29C74ADB00E2709A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5400A929C74ADB00E2709A /* LaunchScreen.storyboard */; };
-		3F5400B629C74ADC00E2709A /* CountriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400B529C74ADC00E2709A /* CountriesTests.swift */; };
 		3F5400C029C74ADC00E2709A /* CountriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400BF29C74ADC00E2709A /* CountriesUITests.swift */; };
 		3F5400C229C74ADC00E2709A /* CountriesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400C129C74ADC00E2709A /* CountriesUITestsLaunchTests.swift */; };
 		3F5400D129C75E7400E2709A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400D029C75E7400E2709A /* NetworkManager.swift */; };
@@ -58,7 +57,6 @@
 		3F5400AA29C74ADB00E2709A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F5400AC29C74ADB00E2709A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F5400B129C74ADC00E2709A /* CountriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F5400B529C74ADC00E2709A /* CountriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTests.swift; sourceTree = "<group>"; };
 		3F5400BB29C74ADC00E2709A /* CountriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5400BF29C74ADC00E2709A /* CountriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesUITests.swift; sourceTree = "<group>"; };
 		3F5400C129C74ADC00E2709A /* CountriesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			children = (
 				3F1D7D0629C9C4FF00767E52 /* Countries */,
 				3F1D7D0529C9BF7900767E52 /* API */,
-				3F5400B529C74ADC00E2709A /* CountriesTests.swift */,
 			);
 			path = CountriesTests;
 			sourceTree = "<group>";
@@ -376,7 +373,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F5400EA29C91BEA00E2709A /* NetworkManagerTests.swift in Sources */,
-				3F5400B629C74ADC00E2709A /* CountriesTests.swift in Sources */,
 				3F5400EE29C9233300E2709A /* HttpMethodTypeTests.swift in Sources */,
 				3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */,
 				3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */,
