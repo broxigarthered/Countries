@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1D44CA29CA5FA200999B87 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D44C929CA5FA200999B87 /* SkeletonLoadable.swift */; };
 		3F1D7D0829C9C51000767E52 /* CountriesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0729C9C51000767E52 /* CountriesAPITests.swift */; };
 		3F1D7D0D29C9E72A00767E52 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */; };
 		3F1D7D1029C9E8FA00767E52 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0F29C9E8FA00767E52 /* Observable.swift */; };
@@ -31,6 +32,9 @@
 		3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */; };
 		3F5400EE29C9233300E2709A /* HttpMethodTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400ED29C9233300E2709A /* HttpMethodTypeTests.swift */; };
 		3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400EF29C9249900E2709A /* EndpointTests.swift */; };
+		3F748C8D29CA103A00DEC301 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F748C8B29CA103A00DEC301 /* CountryTableViewCell.swift */; };
+		3F748C8E29CA103A00DEC301 /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F748C8C29CA103A00DEC301 /* CountryTableViewCell.xib */; };
+		3F748C9129CA117800DEC301 /* UITableView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F748C9029CA117800DEC301 /* UITableView+Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F1D44C929CA5FA200999B87 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
 		3F1D7D0729C9C51000767E52 /* CountriesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPITests.swift; sourceTree = "<group>"; };
 		3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
 		3F1D7D0F29C9E8FA00767E52 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -79,6 +84,9 @@
 		3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		3F5400ED29C9233300E2709A /* HttpMethodTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTypeTests.swift; sourceTree = "<group>"; };
 		3F5400EF29C9249900E2709A /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		3F748C8B29CA103A00DEC301 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		3F748C8C29CA103A00DEC301 /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
+		3F748C9029CA117800DEC301 /* UITableView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Common.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +139,7 @@
 			children = (
 				3F1D7D0F29C9E8FA00767E52 /* Observable.swift */,
 				3F1D7D1129C9F5B400767E52 /* LoadingView.swift */,
+				3F1D44C929CA5FA200999B87 /* SkeletonLoadable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -158,11 +167,11 @@
 		3F54009D29C74ADA00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				3F748C8F29CA116700DEC301 /* Extensions */,
 				3F1D7D0E29C9E8EF00767E52 /* Utils */,
 				3F5400CF29C75D6400E2709A /* API */,
 				3F5400E029C8A3BA00E2709A /* Flows */,
 				3F5400CE29C75D1800E2709A /* Application */,
-				3F5400A229C74ADA00E2709A /* CountriesViewController.swift */,
 				3F5400A429C74ADA00E2709A /* Main.storyboard */,
 				3F5400A729C74ADB00E2709A /* Assets.xcassets */,
 				3F5400A929C74ADB00E2709A /* LaunchScreen.storyboard */,
@@ -228,8 +237,9 @@
 		3F5400E129C8A3CE00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				3F748C8929CA09A700DEC301 /* ViewModel */,
+				3F748C8829CA098F00DEC301 /* View */,
 				3F5400E229C8A3DD00E2709A /* API */,
-				3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -242,6 +252,40 @@
 				3F5400DE29C8A03500E2709A /* Country.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		3F748C8829CA098F00DEC301 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F748C8A29CA101000DEC301 /* Cells */,
+				3F5400A229C74ADA00E2709A /* CountriesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F748C8929CA09A700DEC301 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F748C8A29CA101000DEC301 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3F748C8B29CA103A00DEC301 /* CountryTableViewCell.swift */,
+				3F748C8C29CA103A00DEC301 /* CountryTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3F748C8F29CA116700DEC301 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F748C9029CA117800DEC301 /* UITableView+Common.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F748C8E29CA103A00DEC301 /* CountryTableViewCell.xib in Resources */,
 				3F5400AB29C74ADB00E2709A /* LaunchScreen.storyboard in Resources */,
 				3F5400A829C74ADB00E2709A /* Assets.xcassets in Resources */,
 				3F5400A629C74ADA00E2709A /* Main.storyboard in Resources */,
@@ -385,8 +430,11 @@
 				3F5400D529C89E2300E2709A /* HttpMethodType.swift in Sources */,
 				3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */,
 				3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */,
+				3F1D44CA29CA5FA200999B87 /* SkeletonLoadable.swift in Sources */,
 				3F5400D329C89DEA00E2709A /* Endpoint.swift in Sources */,
 				3F1D7D1229C9F5B400767E52 /* LoadingView.swift in Sources */,
+				3F748C8D29CA103A00DEC301 /* CountryTableViewCell.swift in Sources */,
+				3F748C9129CA117800DEC301 /* UITableView+Common.swift in Sources */,
 				3F5400E529C8A42700E2709A /* ApiConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
