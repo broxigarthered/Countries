@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var sampleLabel: UILabel!
+    
+    var viewModel: CountriesViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -16,25 +20,16 @@ class ViewController: UIViewController {
         let session = URLSession(configuration: .default)
         let httpClient = NetworkManager(session: session)
         let countriesService = CountriesAPI(httpClient: httpClient)
-//        countriesService.getCountries { result in
-//            switch result {
-//            case .success(let success):
-//                print("UDRI bache \(success)")
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
         
-        countriesService.getCountries { result in
-            switch result {
-            case .success(let success):
-                print("Success - \(success)")
-            case .failure(let failure):
-                print(failure)
-            }
+        viewModel = CountriesViewModel(apiService: countriesService)
+        
+        viewModel?.viewDidLoad()
+        viewModel?.isLoading.observe(on: self) { value in
+            value == true ? LoadingView.show() : LoadingView.hide()
         }
+        
     }
 
-
 }
+
 

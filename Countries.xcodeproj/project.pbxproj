@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3F1D7D0829C9C51000767E52 /* CountriesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0729C9C51000767E52 /* CountriesAPITests.swift */; };
+		3F1D7D0D29C9E72A00767E52 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */; };
+		3F1D7D1029C9E8FA00767E52 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0F29C9E8FA00767E52 /* Observable.swift */; };
+		3F1D7D1229C9F5B400767E52 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D1129C9F5B400767E52 /* LoadingView.swift */; };
 		3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54009E29C74ADA00E2709A /* AppDelegate.swift */; };
 		3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A029C74ADA00E2709A /* SceneDelegate.swift */; };
 		3F5400A329C74ADA00E2709A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A229C74ADA00E2709A /* ViewController.swift */; };
@@ -48,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		3F1D7D0729C9C51000767E52 /* CountriesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPITests.swift; sourceTree = "<group>"; };
+		3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		3F1D7D0F29C9E8FA00767E52 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3F1D7D1129C9F5B400767E52 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3F54009B29C74ADA00E2709A /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F54009E29C74ADA00E2709A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F5400A029C74ADA00E2709A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +123,15 @@
 			path = Countries;
 			sourceTree = "<group>";
 		};
+		3F1D7D0E29C9E8EF00767E52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3F1D7D0F29C9E8FA00767E52 /* Observable.swift */,
+				3F1D7D1129C9F5B400767E52 /* LoadingView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		3F54009229C74ADA00E2709A = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +155,7 @@
 		3F54009D29C74ADA00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
+				3F1D7D0E29C9E8EF00767E52 /* Utils */,
 				3F5400CF29C75D6400E2709A /* API */,
 				3F5400E029C8A3BA00E2709A /* Flows */,
 				3F5400CE29C75D1800E2709A /* Application */,
@@ -210,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				3F5400E229C8A3DD00E2709A /* API */,
+				3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -359,11 +376,14 @@
 				3F5400DF29C8A03500E2709A /* Country.swift in Sources */,
 				3F5400D829C89EE400E2709A /* NetworkError.swift in Sources */,
 				3F5400A329C74ADA00E2709A /* ViewController.swift in Sources */,
+				3F1D7D1029C9E8FA00767E52 /* Observable.swift in Sources */,
+				3F1D7D0D29C9E72A00767E52 /* CountriesViewModel.swift in Sources */,
 				3F5400DA29C89FBC00E2709A /* CountriesAPI.swift in Sources */,
 				3F5400D529C89E2300E2709A /* HttpMethodType.swift in Sources */,
 				3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */,
 				3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */,
 				3F5400D329C89DEA00E2709A /* Endpoint.swift in Sources */,
+				3F1D7D1229C9F5B400767E52 /* LoadingView.swift in Sources */,
 				3F5400E529C8A42700E2709A /* ApiConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
