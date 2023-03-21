@@ -7,9 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var sampleLabel: UILabel!
+class CountriesViewController: UIViewController {
     
     var viewModel: CountriesViewModel?
     
