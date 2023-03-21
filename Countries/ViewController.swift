@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 //            }
 //        }
         
-        countriesService.testGetCountries { result in
+        countriesService.getCountries { result in
             switch result {
             case .success(let success):
                 print("Success - \(success)")

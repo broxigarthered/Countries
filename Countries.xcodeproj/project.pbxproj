@@ -25,6 +25,8 @@
 		3F5400E529C8A42700E2709A /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400E429C8A42700E2709A /* ApiConstants.swift */; };
 		3F5400EA29C91BEA00E2709A /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400E929C91BEA00E2709A /* NetworkManagerTests.swift */; };
 		3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */; };
+		3F5400EE29C9233300E2709A /* HttpMethodTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400ED29C9233300E2709A /* HttpMethodTypeTests.swift */; };
+		3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400EF29C9249900E2709A /* EndpointTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		3F5400E429C8A42700E2709A /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		3F5400E929C91BEA00E2709A /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		3F5400ED29C9233300E2709A /* HttpMethodTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethodTypeTests.swift; sourceTree = "<group>"; };
+		3F5400EF29C9249900E2709A /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F1D7D0529C9BF7900767E52 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3F5400E929C91BEA00E2709A /* NetworkManagerTests.swift */,
+				3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */,
+				3F5400ED29C9233300E2709A /* HttpMethodTypeTests.swift */,
+				3F5400EF29C9249900E2709A /* EndpointTests.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		3F54009229C74ADA00E2709A = {
 			isa = PBXGroup;
 			children = (
@@ -132,9 +147,8 @@
 		3F5400B429C74ADC00E2709A /* CountriesTests */ = {
 			isa = PBXGroup;
 			children = (
+				3F1D7D0529C9BF7900767E52 /* API */,
 				3F5400B529C74ADC00E2709A /* CountriesTests.swift */,
-				3F5400E929C91BEA00E2709A /* NetworkManagerTests.swift */,
-				3F5400EB29C9225700E2709A /* NetworkErrorTests.swift */,
 			);
 			path = CountriesTests;
 			sourceTree = "<group>";
@@ -352,6 +366,8 @@
 			files = (
 				3F5400EA29C91BEA00E2709A /* NetworkManagerTests.swift in Sources */,
 				3F5400B629C74ADC00E2709A /* CountriesTests.swift in Sources */,
+				3F5400EE29C9233300E2709A /* HttpMethodTypeTests.swift in Sources */,
+				3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */,
 				3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

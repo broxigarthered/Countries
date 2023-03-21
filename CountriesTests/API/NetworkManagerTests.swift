@@ -40,7 +40,7 @@ class MockURLSession: URLSessionProtocol {
         }
         
         if let nextError = nextError {
-            completionHandler(nextData, errorHttpURLResponse(request: request), nextError )
+            completionHandler(nextData, errorHttpURLResponse(request: request), nextError)
         }
         
         return nextDataTask
@@ -69,7 +69,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .get)
         
-        networkManager.secondRequest(endpoint: endpoint) { result in
+        networkManager.request(endpoint: endpoint) { result in
             // result
         }
         
@@ -83,7 +83,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
         
-        networkManager.secondRequest(endpoint: endpoint) { result in
+        networkManager.request(endpoint: endpoint) { result in
             // result
         }
         
@@ -97,7 +97,7 @@ final class NetworkManagerTests: XCTestCase {
         session.nextDataTask = dataTask
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
-        networkManager.secondRequest(endpoint: endpoint) { result in
+        networkManager.request(endpoint: endpoint) { result in
             
         }
         
@@ -112,7 +112,7 @@ final class NetworkManagerTests: XCTestCase {
         var actualData: Data?
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
-        networkManager.secondRequest(endpoint: endpoint) { result in
+        networkManager.request(endpoint: endpoint) { result in
             switch result {
             case .success(let data):
                 actualData = data
@@ -120,7 +120,7 @@ final class NetworkManagerTests: XCTestCase {
                 XCTFail("There should be no error")
             }
         }
-
+        
         XCTAssertNotNil(actualData)
     }
     
@@ -129,7 +129,7 @@ final class NetworkManagerTests: XCTestCase {
         var actualError: Error?
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
-        networkManager.secondRequest(endpoint: endpoint) { result in
+        networkManager.request(endpoint: endpoint) { result in
             switch result {
             case .success( _):
                 XCTFail("There should be no data")
