@@ -33,7 +33,6 @@ extension CountriesViewModel: CountriesViewModelInput {
         navigator?.showDetails(for: country)
     }
     
-    
     func viewDidLoad() {
         isLoading.value = true
         countriesService.getCountries { [weak self] result in
@@ -48,6 +47,5 @@ extension CountriesViewModel: CountriesViewModelInput {
             }
         }
     }
-    
     
 }

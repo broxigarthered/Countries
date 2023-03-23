@@ -43,7 +43,6 @@ class CountriesViewController: UIViewController {
         
         viewModel.viewDidLoad()
         bind(to: viewModel)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -16,11 +16,6 @@ class CountryTableViewCell: UITableViewCell, NibProvidable, ReusableView, Skelet
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
     func update(with title: String) {
         titleLabel.text = title
     }
