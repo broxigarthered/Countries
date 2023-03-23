@@ -56,19 +56,13 @@ extension CountriesViewModel: CountriesViewModelInput {
     
     func didSearch(country name: String) {
         guard name.count >= 3 else {
-            // todo: countries.value = the initial state
-            //            filteredCountries.value = countries.value
             countries.value = initialCountries.value
-            print(countries.value.count)
             return
         }
-        
         filteredCountries.value = countries.value.filter { country in
-            country.name.contains(name)
+            country.name.lowercased().contains(name.lowercased())
         }
-        
         countries.value = filteredCountries.value
-        print(countries.value.count)
     }
     
     func didCancelSearching() {

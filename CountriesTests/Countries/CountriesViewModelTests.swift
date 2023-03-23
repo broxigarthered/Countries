@@ -22,7 +22,7 @@ class CountriesServiceMock: CountriesService {
             completion(.failure(mockError))
         }
     }
-
+    
 }
 
 class CountriesNavigatorMock: CountriesNavigator {
@@ -37,12 +37,45 @@ class CountriesNavigatorMock: CountriesNavigator {
     
 }
 
+struct CountriesMock {
+    
+    static func generateCountries() -> [Country] {
+        let country1 = Country(capitalName: "Sofia",
+                               code: "1574",
+                               flag: "https://bulgarian-flag.com",
+                               latLng: [111.0, 111.0],
+                               name: "Bulgaria",
+                               population: 6800000,
+                               region: "Southeastern Europe",
+                               subregion: "random")
+        let country2 = Country(capitalName: "London",
+                               code: "2222",
+                               flag: "https://uk-flag.com",
+                               latLng: [111.0, 111.0],
+                               name: "United Kingdom",
+                               population: 120000000,
+                               region: "Europe",
+                               subregion: "random")
+        let country3 = Country(capitalName: "Dhaka",
+                               code: "1111",
+                               flag: "https://bangladesh-flag.com",
+                               latLng: [111.0, 111.0],
+                               name: "Bangladesh",
+                               population: 15000,
+                               region: "Southeastern Europe",
+                               subregion: "random")
+        
+        return [country1, country2, country3]
+    }
+    
+}
+
 final class CountriesViewModelTests: XCTestCase {
     
     var countriesService: CountriesServiceMock!
     var countriesNavigator: CountriesNavigatorMock!
     var sut: CountriesViewModel!
-
+    
     override func setUpWithError() throws {
         countriesService = CountriesServiceMock()
         countriesNavigator = CountriesNavigatorMock()
@@ -51,44 +84,35 @@ final class CountriesViewModelTests: XCTestCase {
         
         try super.setUpWithError()
     }
-
+    
     override func tearDownWithError() throws {
         countriesService = nil
         sut = nil
         
         try super.tearDownWithError()
     }
-
+    
     func testViewDidLoad_loading() {
-         // Given
-         let expect = expectation(description: "Loading")
+        // Given
+        let expect = expectation(description: "Loading")
         sut.isLoading.observe(on: self, observerBlock: { isLoading in
             if !isLoading {
                 expect.fulfill()
             }
         })
-         
-         // When
-         sut.viewDidLoad()
-         
-         // Then
-         wait(for: [expect], timeout: 1.0)
-         XCTAssertTrue(sut.isLoading.value)
-     }
+        
+        // When
+        sut.viewDidLoad()
+        
+        // Then
+        wait(for: [expect], timeout: 1.0)
+        XCTAssertTrue(sut.isLoading.value)
+    }
     
     func testViewDidLoad_success() {
         // Given
         let expect = expectation(description: "Fetch Success")
-        countriesService.mockData = [
-            Country(capitalName: "capital1",
-                    code: "code1",
-                    flag: "flag.url",
-                    latLng: [33.0,33.0],
-                    name: "Bulgaria",
-                    population: 1,
-                    region: "region1",
-                    subregion: "subregion1")
-        ]
+        countriesService.mockData = CountriesMock.generateCountries()
         
         sut.countries.observe(on: self) { countries in
             if !countries.isEmpty {
@@ -102,8 +126,11 @@ final class CountriesViewModelTests: XCTestCase {
         // Then
         wait(for: [expect], timeout: 1.0)
         XCTAssertFalse(sut.isLoading.value)
-        XCTAssertEqual(sut.countries.value.count, 1)
-        XCTAssertEqual(sut.countries.value.first?.name, "Bulgaria")
+        XCTAssertEqual(sut.countries.value.count, 3)
+        // countries are being sorted by population in descending order
+        XCTAssertEqual(sut.countries.value[0].name, "United Kingdom")
+        XCTAssertEqual(sut.countries.value[1].name, "Bulgaria")
+        XCTAssertEqual(sut.countries.value[2].name, "Bangladesh")
     }
     
     func testViewDidLoad_failure() {
@@ -149,4 +176,87 @@ final class CountriesViewModelTests: XCTestCase {
         XCTAssertEqual(countriesNavigator.receivedCountry?.population, countryMock.population)
     }
     
+    func testDidSearch_with_validInput_shouldReturnOneCountry() {
+        // Given
+        countriesService.mockData = CountriesMock.generateCountries()
+        
+        // When
+        sut.viewDidLoad()
+        sut.didSearch(country: "Bulg")
+        
+        // Then
+        XCTAssertEqual(sut.countries.value.count, 1)
+        XCTAssertEqual(sut.countries.value[0].name, "Bulgaria")
+    }
+    
+    func testDidSearch_with_validInput_lowercaseAndCapitalCharacters_shouldReturnOneCountry() {
+        // Given
+        countriesService.mockData = CountriesMock.generateCountries()
+        
+        // When
+        sut.viewDidLoad()
+        sut.didSearch(country: "buLG")
+        
+        // Then
+        XCTAssertEqual(sut.countries.value.count, 1)
+        XCTAssertEqual(sut.countries.value[0].name, "Bulgaria")
+    }
+    
+    func testDidSearch_with_lessThanThree_characters_shouldReturnSameCountries() {
+        // Given
+        countriesService.mockData = CountriesMock.generateCountries()
+        
+        // When
+        sut.viewDidLoad()
+        sut.didSearch(country: "B")
+        
+        // Then
+        XCTAssertEqual(sut.countries.value.count, 3)
+    }
+    
+    func testDidSearch_with_moreThanThree_characters_shouldReturnZero_countries() {
+        // Given
+        countriesService.mockData = CountriesMock.generateCountries()
+        
+        // When
+        sut.viewDidLoad()
+        sut.didSearch(country: "Bulglgekgeoogek")
+        
+        // Then
+        XCTAssertEqual(sut.countries.value.count, 0)
+    }
+    
+    func testDidSearch_withMultiple_searches() {
+        countriesService.mockData = CountriesMock.generateCountries()
+        sut.viewDidLoad()
+        
+        sut.didSearch(country: "Bang")
+        XCTAssertEqual(sut.countries.value.count, 1)
+        XCTAssertEqual(sut.countries.value[0].name, "Bangladesh")
+        
+        sut.didSearch(country: "A")
+        XCTAssertEqual(sut.countries.value.count, 3)
+        
+        sut.didSearch(country: "Unit")
+        XCTAssertEqual(sut.countries.value.count, 1)
+        XCTAssertEqual(sut.countries.value[0].name, "United Kingdom")
+        
+        sut.didSearch(country: "randomrandom")
+        XCTAssertEqual(sut.countries.value.count, 0)
+    }
+    
+    func testCancelSearch_shouldReturn_original_Count() {
+        // Given
+        countriesService.mockData = CountriesMock.generateCountries()
+        
+        // When
+        sut.viewDidLoad()
+        sut.didSearch(country: "Bulg")
+        
+        // Then
+        XCTAssertEqual(sut.countries.value.count, 1)
+        
+        sut.didCancelSearching()
+        XCTAssertEqual(sut.countries.value.count, 3)
+    }
 }
