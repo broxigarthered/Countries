@@ -8,6 +8,10 @@
 import UIKit
 
 class CountriesViewController: UIViewController {
+    
+    private struct Constants {
+        public static let searchTextFieldId = "\(CountriesViewController.self).searchTextFieldId"
+    }
 
     var viewModel: CountriesViewModel
     
@@ -16,7 +20,7 @@ class CountriesViewController: UIViewController {
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
             titleLabel.numberOfLines = 0
-            titleLabel.text = "World countries list\n🇧🇬🇩🇪🇺🇸🇦🇩"
+            titleLabel.text = "\n🇧🇬🇩🇪🇺🇸🇦🇩"
         }
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -28,6 +32,16 @@ class CountriesViewController: UIViewController {
             tableView.registerNib(cellClass: CountryTableViewCell.self)
         }
     }
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .label
+        searchController.searchBar.delegate = self
+        searchController.searchBar.searchTextField.accessibilityIdentifier = Constants.searchTextFieldId
+        searchController.searchBar.placeholder = "Enter at least 3 characters"
+        return searchController
+    }()
     
     init(viewModel: CountriesViewModel) {
         self.viewModel = viewModel
@@ -43,16 +57,8 @@ class CountriesViewController: UIViewController {
         
         viewModel.viewDidLoad()
         bind(to: viewModel)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        configureUI()
+        
     }
     
     private func bind(to viewModel: CountriesViewModel?) {
@@ -61,17 +67,27 @@ class CountriesViewController: UIViewController {
         }
         
         viewModel?.countries.observe(on: self, observerBlock: { [weak self] countries in
-            self?.tableView.reloadData()
+            if !countries.isEmpty {
+                self?.tableView.reloadData()
+            }
         })
         
         viewModel?.error.observe(on: self, observerBlock: { [weak self] errorMessage in
-            self?.displayError(message: errorMessage)
+            if !errorMessage.isEmpty {
+                self?.displayError(message: errorMessage)
+            }
         })
+    }
+    
+    private func configureUI() {
+        navigationItem.searchController = self.searchController
+        searchController.isActive = true
+        title = "World countries 🇧🇬🇩🇪🇺🇸🇦🇩"
     }
 
 }
 
-// MARK: UITableViewDataSource & UITableViewDelegate
+// MARK: - UITableViewDataSource & UITableViewDelegate
 
 extension CountriesViewController: UITableViewDataSource {
     
@@ -98,15 +114,35 @@ extension CountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.countries.value[indexPath.row]
         viewModel.didSelectCountry(country: model)
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchController.searchBar.resignFirstResponder()
     }
     
 }
 
+// MARK: - ErrorDisplayable
 extension CountriesViewController: ErrorDisplayable {
+    
     func displayError(message: String) {
         let alert = UIAlertController(title: "Ops we have a problem!", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(alert, animated: true)
     }
+    
+}
+
+extension CountriesViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.didSearch(country: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.didCancelSearching()
+    }
+    
 }
 

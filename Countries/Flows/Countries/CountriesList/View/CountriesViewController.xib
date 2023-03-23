@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountriesViewController" customModule="Countries" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="IvC-lE-gHa" id="9vs-ZX-BW0"/>
-                <outlet property="titleLabel" destination="p81-7C-sgw" id="kD6-If-URw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="o5F-CQ-DWc"/>
             </connections>
         </placeholder>
@@ -21,27 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p81-7C-sgw">
-                    <rect key="frame" x="16" y="75" width="361" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IvC-lE-gHa">
-                    <rect key="frame" x="16" y="112" width="361" height="690"/>
+                    <rect key="frame" x="16" y="67" width="361" height="735"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="IvC-lE-gHa" firstAttribute="trailing" secondItem="p81-7C-sgw" secondAttribute="trailing" id="DWi-uk-a9y"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p81-7C-sgw" secondAttribute="trailing" constant="16" id="DXx-sH-JxC"/>
-                <constraint firstItem="IvC-lE-gHa" firstAttribute="top" secondItem="p81-7C-sgw" secondAttribute="bottom" constant="16" id="HCu-NP-1Ha"/>
-                <constraint firstItem="p81-7C-sgw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="TxP-BG-2cC"/>
+                <constraint firstItem="IvC-lE-gHa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="YdX-4d-OHt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IvC-lE-gHa" secondAttribute="bottom" constant="16" id="a5v-dc-5mq"/>
-                <constraint firstItem="p81-7C-sgw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="jOS-XV-VmX"/>
-                <constraint firstItem="IvC-lE-gHa" firstAttribute="leading" secondItem="p81-7C-sgw" secondAttribute="leading" id="ryW-in-dXj"/>
+                <constraint firstItem="IvC-lE-gHa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="c26-UA-NV8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IvC-lE-gHa" secondAttribute="trailing" constant="16" id="cS6-pJ-dap"/>
             </constraints>
             <point key="canvasLocation" x="138" y="20"/>
         </view>
