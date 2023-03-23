@@ -8,9 +8,8 @@
 import UIKit
 
 class CountriesViewController: UIViewController {
-    
-    // TODO: this won't be optional after an coordinator is implemented
-    var viewModel: CountriesViewModel?
+
+    var viewModel: CountriesViewModel
     
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
@@ -30,18 +29,25 @@ class CountriesViewController: UIViewController {
         }
     }
     
+    init(viewModel: CountriesViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Not supported!")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        let session = URLSession(configuration: .default)
-        let httpClient = NetworkManager(session: session)
-        let countriesService = CountriesAPI(httpClient: httpClient)
+        navigationController?.navigationBar.isHidden = true
+        viewModel.viewDidLoad()
+        bind(to: viewModel)
         
-        viewModel = CountriesViewModel(apiService: countriesService)
-        
-        viewModel?.viewDidLoad()
+    }
+    
+    private func bind(to viewModel: CountriesViewModel?) {
         viewModel?.isLoading.observe(on: self) { value in
             value == true ? LoadingView.show() : LoadingView.hide()
         }
@@ -49,7 +55,6 @@ class CountriesViewController: UIViewController {
         viewModel?.countries.observe(on: self, observerBlock: { [weak self] countries in
             self?.tableView.reloadData()
         })
-        
     }
 
 }
@@ -64,20 +69,24 @@ extension CountriesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let model = viewModel?.countries.value[indexPath.row] {
-            cell.update(with: model.name)
-        }
+        let model = viewModel.countries.value[indexPath.row]
+        cell.update(with: model.name)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.countries.value.count ?? 0
+        return viewModel.countries.value.count
     }
     
 }
 
 extension CountriesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.countries.value[indexPath.row]
+        viewModel.didSelectCountry(country: model)
+    }
     
 }
 
