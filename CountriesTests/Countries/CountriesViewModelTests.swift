@@ -59,7 +59,7 @@ final class CountriesViewModelTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func test_viewDidLoad_loading() {
+    func testViewDidLoad_loading() {
          // Given
          let expect = expectation(description: "Loading")
         sut.isLoading.observe(on: self, observerBlock: { isLoading in
@@ -76,7 +76,7 @@ final class CountriesViewModelTests: XCTestCase {
          XCTAssertTrue(sut.isLoading.value)
      }
     
-    func test_viewDidLoad_success() {
+    func testViewDidLoad_success() {
         // Given
         let expect = expectation(description: "Fetch Success")
         countriesService.mockData = [
@@ -106,7 +106,7 @@ final class CountriesViewModelTests: XCTestCase {
         XCTAssertEqual(sut.countries.value.first?.name, "Bulgaria")
     }
     
-    func test_viewDidLoad_failure() {
+    func testViewDidLoad_failure() {
         // Given
         let expect = expectation(description: "Fetch Failure")
         countriesService.mockError = .invalidResponse
@@ -125,7 +125,7 @@ final class CountriesViewModelTests: XCTestCase {
         XCTAssertEqual(sut.error.value, NetworkError.invalidResponse.description)
     }
     
-    func test_didSelectCountry() {
+    func testDidSelectCountry() {
         // Given
         let countryMock = Country(capitalName: "Sofia",
                                   code: "1574",

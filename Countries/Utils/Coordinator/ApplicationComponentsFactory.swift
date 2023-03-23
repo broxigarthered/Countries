@@ -22,7 +22,8 @@ final class ApplicationComponentsFactory: ApplicationCoordinatorDependencyProvid
     
     func makeCountryDetailsController(_ country: Country) -> UIViewController {
         let viewModel = CountryDetailsViewModel(country: country)
-        let viewController = CountryDetailsViewController(viewModel: viewModel)
+        let imageCache: ImageCacheType = ImageCache()
+        let viewController = CountryDetailsViewController(viewModel: viewModel, imageCache: imageCache)
         return viewController
     }
     

@@ -44,7 +44,7 @@ final class CountriesAPITests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_getCountries_Success() {
+    func testGetCountries_Success() {
         // Given
         networkManager.mockData =  """
         [
@@ -106,7 +106,7 @@ final class CountriesAPITests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-    func test_getCountries_Error() {
+    func testGetCountries_Error() {
         // Given
         networkManager.mockError = NetworkError.error(statusCode: 404, data: nil)
         let expectation = self.expectation(description: "getCountries")
@@ -128,7 +128,7 @@ final class CountriesAPITests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-    func test_getCountries_ParseError() {
+    func testGetCountries_ParseError() {
         // Given
         networkManager.mockData =  """
         [

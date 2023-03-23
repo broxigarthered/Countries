@@ -27,10 +27,11 @@ class CountryDetailsViewController: UIViewController, SkeletonLoadable {
     }
     
     private let viewModel: CountryDetailsViewModel
-    private lazy var cache: ImageCacheType = ImageCache()
+    private let cache: ImageCacheType
     
-    init(viewModel: CountryDetailsViewModel) {
+    init(viewModel: CountryDetailsViewModel, imageCache: ImageCacheType) {
         self.viewModel = viewModel
+        self.cache = imageCache
         super.init(nibName: nil, bundle: nil)
     }
     
