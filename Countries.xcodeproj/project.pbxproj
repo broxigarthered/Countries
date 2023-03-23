@@ -29,6 +29,7 @@
 		3F33B16D29CC7F5D00090DB8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F33B16C29CC7F5D00090DB8 /* SVGKit */; };
 		3F33B17529CC993E00090DB8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B17429CC993E00090DB8 /* UIImage+Extension.swift */; };
 		3F33B17729CCA38A00090DB8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B17629CCA38A00090DB8 /* ImageCache.swift */; };
+		3F33B17929CCA48700090DB8 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B17829CCA48700090DB8 /* ImageCacheTests.swift */; };
 		3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54009E29C74ADA00E2709A /* AppDelegate.swift */; };
 		3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A029C74ADA00E2709A /* SceneDelegate.swift */; };
 		3F5400A329C74ADA00E2709A /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A229C74ADA00E2709A /* CountriesViewController.swift */; };
@@ -90,6 +91,7 @@
 		3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationFlowCoordinatorTests.swift; sourceTree = "<group>"; };
 		3F33B17429CC993E00090DB8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3F33B17629CCA38A00090DB8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		3F33B17829CCA48700090DB8 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
 		3F54009B29C74ADA00E2709A /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F54009E29C74ADA00E2709A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F5400A029C74ADA00E2709A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				3F33B16829CC7D4700090DB8 /* Coordinator */,
 				3F1D7D0629C9C4FF00767E52 /* Countries */,
 				3F1D7D0529C9BF7900767E52 /* API */,
+				3F33B17829CCA48700090DB8 /* ImageCacheTests.swift */,
 			);
 			path = CountriesTests;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 			files = (
 				3F5400EA29C91BEA00E2709A /* NetworkManagerTests.swift in Sources */,
 				3F5400EE29C9233300E2709A /* HttpMethodTypeTests.swift in Sources */,
+				3F33B17929CCA48700090DB8 /* ImageCacheTests.swift in Sources */,
 				3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */,
 				3F1D7D1429C9FF7300767E52 /* CountriesViewModelTests.swift in Sources */,
 				3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */,
