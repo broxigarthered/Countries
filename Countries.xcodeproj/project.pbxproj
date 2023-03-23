@@ -27,6 +27,8 @@
 		3F33B16729CC7B3100090DB8 /* ApplicationComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16629CC7B3100090DB8 /* ApplicationComponentsFactory.swift */; };
 		3F33B16A29CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */; };
 		3F33B16D29CC7F5D00090DB8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F33B16C29CC7F5D00090DB8 /* SVGKit */; };
+		3F33B17529CC993E00090DB8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B17429CC993E00090DB8 /* UIImage+Extension.swift */; };
+		3F33B17729CCA38A00090DB8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B17629CCA38A00090DB8 /* ImageCache.swift */; };
 		3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54009E29C74ADA00E2709A /* AppDelegate.swift */; };
 		3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A029C74ADA00E2709A /* SceneDelegate.swift */; };
 		3F5400A329C74ADA00E2709A /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A229C74ADA00E2709A /* CountriesViewController.swift */; };
@@ -86,6 +88,8 @@
 		3F33B16429CC7AD700090DB8 /* ApplicationCoordinatorDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinatorDependencyProvider.swift; sourceTree = "<group>"; };
 		3F33B16629CC7B3100090DB8 /* ApplicationComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationComponentsFactory.swift; sourceTree = "<group>"; };
 		3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationFlowCoordinatorTests.swift; sourceTree = "<group>"; };
+		3F33B17429CC993E00090DB8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		3F33B17629CCA38A00090DB8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		3F54009B29C74ADA00E2709A /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F54009E29C74ADA00E2709A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F5400A029C74ADA00E2709A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				3F1D7D0F29C9E8FA00767E52 /* Observable.swift */,
 				3F1D7D1129C9F5B400767E52 /* LoadingView.swift */,
 				3F1D44C929CA5FA200999B87 /* SkeletonLoadable.swift */,
+				3F33B17629CCA38A00090DB8 /* ImageCache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -198,6 +203,59 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F33B16E29CC88B000090DB8 /* CountriesList */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B17029CC88CF00090DB8 /* View */,
+				3F33B16F29CC88C400090DB8 /* ViewModel */,
+			);
+			path = CountriesList;
+			sourceTree = "<group>";
+		};
+		3F33B16F29CC88C400090DB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F33B17029CC88CF00090DB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F748C8A29CA101000DEC301 /* Cells */,
+				3F5400A229C74ADA00E2709A /* CountriesViewController.swift */,
+				3F33B15C29CC535400090DB8 /* CountriesViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F33B17129CC890400090DB8 /* CountryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B17329CC891600090DB8 /* ViewModel */,
+				3F33B17229CC891000090DB8 /* View */,
+			);
+			path = CountryDetails;
+			sourceTree = "<group>";
+		};
+		3F33B17229CC891000090DB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B15E29CC576B00090DB8 /* CountryDetailsViewController.swift */,
+				3F33B15F29CC576B00090DB8 /* CountryDetailsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F33B17329CC891600090DB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B15A29CB271D00090DB8 /* CountryDetailsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F54009229C74ADA00E2709A = {
@@ -295,8 +353,8 @@
 		3F5400E129C8A3CE00E2709A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				3F748C8929CA09A700DEC301 /* ViewModel */,
-				3F748C8829CA098F00DEC301 /* View */,
+				3F33B17129CC890400090DB8 /* CountryDetails */,
+				3F33B16E29CC88B000090DB8 /* CountriesList */,
 				3F5400E229C8A3DD00E2709A /* API */,
 			);
 			path = Countries;
@@ -310,27 +368,6 @@
 				3F5400DE29C8A03500E2709A /* Country.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		3F748C8829CA098F00DEC301 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3F748C8A29CA101000DEC301 /* Cells */,
-				3F5400A229C74ADA00E2709A /* CountriesViewController.swift */,
-				3F33B15C29CC535400090DB8 /* CountriesViewController.xib */,
-				3F33B15E29CC576B00090DB8 /* CountryDetailsViewController.swift */,
-				3F33B15F29CC576B00090DB8 /* CountryDetailsViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3F748C8929CA09A700DEC301 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3F1D7D0C29C9E72A00767E52 /* CountriesViewModel.swift */,
-				3F33B15A29CB271D00090DB8 /* CountryDetailsViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F748C8A29CA101000DEC301 /* Cells */ = {
@@ -347,6 +384,7 @@
 			children = (
 				3F748C9029CA117800DEC301 /* UITableView+Common.swift */,
 				3F1D44D429CA767800999B87 /* UIColor+Extension.swift */,
+				3F33B17429CC993E00090DB8 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -509,9 +547,11 @@
 				3F1D7D0D29C9E72A00767E52 /* CountriesViewModel.swift in Sources */,
 				3F33B15729CB146D00090DB8 /* FlowCoordinator.swift in Sources */,
 				3F5400DA29C89FBC00E2709A /* CountriesAPI.swift in Sources */,
+				3F33B17729CCA38A00090DB8 /* ImageCache.swift in Sources */,
 				3F5400D529C89E2300E2709A /* HttpMethodType.swift in Sources */,
 				3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */,
 				3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */,
+				3F33B17529CC993E00090DB8 /* UIImage+Extension.swift in Sources */,
 				3F1D44CA29CA5FA200999B87 /* SkeletonLoadable.swift in Sources */,
 				3F33B15929CB14D900090DB8 /* ApplicationFlowCoordinator.swift in Sources */,
 				3F5400D329C89DEA00E2709A /* Endpoint.swift in Sources */,
