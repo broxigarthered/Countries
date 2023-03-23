@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Custom observable logic
 public final class Observable<Value> {
     
     struct Observer<Value> {

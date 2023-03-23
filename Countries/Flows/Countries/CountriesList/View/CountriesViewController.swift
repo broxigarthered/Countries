@@ -63,6 +63,10 @@ class CountriesViewController: UIViewController {
         viewModel?.countries.observe(on: self, observerBlock: { [weak self] countries in
             self?.tableView.reloadData()
         })
+        
+        viewModel?.error.observe(on: self, observerBlock: { [weak self] errorMessage in
+            self?.displayError(message: errorMessage)
+        })
     }
 
 }
@@ -98,4 +102,11 @@ extension CountriesViewController: UITableViewDelegate {
     
 }
 
+extension CountriesViewController: ErrorDisplayable {
+    func displayError(message: String) {
+        let alert = UIAlertController(title: "Ops we have a problem!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
+    }
+}
 

@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-// TODO: Might remove it
 protocol SkeletonLoadable {
     func makeAnimationGroup(previousGroup: CAAnimationGroup?) -> CAAnimationGroup
 }

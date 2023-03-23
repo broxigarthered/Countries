@@ -7,6 +7,8 @@
 
 import UIKit
 
+// Adds loading spinner programatically.
+// Use it as static class
 public class LoadingView {
     
     internal static var spinner: UIActivityIndicatorView?
