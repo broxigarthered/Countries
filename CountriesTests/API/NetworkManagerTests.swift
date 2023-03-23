@@ -66,48 +66,54 @@ final class NetworkManagerTests: XCTestCase {
     }
     
     func testGetRequest_withUrl() {
-        
+        // Given
         guard let url = URL(string: "https://mockurl/mockUrlEndpoint") else {
             fatalError("URL can't be empty")
         }
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .get)
         
+        // When
         networkManager.request(endpoint: endpoint) { result in
             // result
         }
         
+        // Then
         XCTAssert(session.lastURL == url)
     }
     
     func testPostRequest_withUrl() {
-        
+        // Given
         guard let url = URL(string: "https://mockurl/mockUrlEndpoint") else {
             fatalError("URL can't be empty")
         }
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
         
+        // When
         networkManager.request(endpoint: endpoint) { result in
             // result
         }
         
+        // Then
         XCTAssert(session.lastURL == url)
     }
     
     
     func testRequest_resumeWasCalled() {
-        
+        // Given
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
+        // When
         networkManager.request(endpoint: endpoint) { result in
             
         }
-        
+        // Then
         XCTAssert(dataTask.resumeWasCalled)
     }
     
     func testGetRequest_should_returnData() {
+        // Given
         let expectedData = "{}".data(using: .utf8)
         
         session.nextData = expectedData
@@ -115,6 +121,7 @@ final class NetworkManagerTests: XCTestCase {
         var actualData: Data?
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
+        // When
         networkManager.request(endpoint: endpoint) { result in
             switch result {
             case .success(let data):
@@ -124,14 +131,17 @@ final class NetworkManagerTests: XCTestCase {
             }
         }
         
+        // Then
         XCTAssertNotNil(actualData)
     }
     
     func testGetRequest_should_returnError() {
+        // Given
         session.nextError = NetworkError.generic(message: "Sample error")
         var actualError: Error?
         
         let endpoint = Endpoint(endpoint: "/mockUrlEndpoint", baseUrl: "https://mockurl", method: .post)
+        // When
         networkManager.request(endpoint: endpoint) { result in
             switch result {
             case .success( _):
@@ -141,6 +151,7 @@ final class NetworkManagerTests: XCTestCase {
             }
         }
         
+        // Then
         XCTAssertNotNil(actualError)
     }
     

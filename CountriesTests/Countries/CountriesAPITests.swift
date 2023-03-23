@@ -44,8 +44,8 @@ final class CountriesAPITests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testGetCountries_Success() {
-    
+    func test_getCountries_Success() {
+        // Given
         networkManager.mockData =  """
         [
             {
@@ -73,6 +73,7 @@ final class CountriesAPITests: XCTestCase {
         
         let expectation = self.expectation(description: "getCountries")
         
+        // When
         countriesApi.getCountries { result in
             switch result {
             case .success(let data):
@@ -101,15 +102,17 @@ final class CountriesAPITests: XCTestCase {
             expectation.fulfill()
         }
         
+        // Then
         waitForExpectations(timeout: 1.0)
     }
     
-    func testGetCountries_Error() {
+    func test_getCountries_Error() {
+        // Given
         networkManager.mockError = NetworkError.error(statusCode: 404, data: nil)
-        
         let expectation = self.expectation(description: "getCountries")
         let expectedError = NetworkError.error(statusCode: 404, data: nil)
         
+        // When
         countriesApi.getCountries { result in
             switch result {
             case .success(let data):
@@ -121,10 +124,12 @@ final class CountriesAPITests: XCTestCase {
             expectation.fulfill()
         }
         
+        // Then
         waitForExpectations(timeout: 1.0)
     }
     
-    func testGetCountries_ParseError() {
+    func test_getCountries_ParseError() {
+        // Given
         networkManager.mockData =  """
         [
             {
@@ -143,6 +148,7 @@ final class CountriesAPITests: XCTestCase {
         let expectation = self.expectation(description: "getCountries")
         let expectedError = NetworkError.invalidDecoding(error: "").description
 
+        // When
         countriesApi.getCountries { result in
             switch result {
             case .success(let data):
@@ -154,6 +160,7 @@ final class CountriesAPITests: XCTestCase {
             expectation.fulfill()
         }
         
+        // Then
         waitForExpectations(timeout: 1.0)
     }
 

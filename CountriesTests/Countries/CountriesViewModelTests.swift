@@ -22,17 +22,32 @@ class CountriesServiceMock: CountriesService {
             completion(.failure(mockError))
         }
     }
+
+}
+
+class CountriesNavigatorMock: CountriesNavigator {
+    
+    var showDetailsCallCount = 0
+    var receivedCountry: Country?
+    
+    func showDetails(for country: Countries.Country) {
+        showDetailsCallCount += 1
+        receivedCountry = country
+    }
     
 }
 
 final class CountriesViewModelTests: XCTestCase {
     
     var countriesService: CountriesServiceMock!
+    var countriesNavigator: CountriesNavigatorMock!
     var sut: CountriesViewModel!
 
     override func setUpWithError() throws {
         countriesService = CountriesServiceMock()
-        sut = CountriesViewModel(apiService: countriesService)
+        countriesNavigator = CountriesNavigatorMock()
+        sut = CountriesViewModel(apiService: countriesService,
+                                 navigator: countriesNavigator)
         
         try super.setUpWithError()
     }
@@ -108,6 +123,30 @@ final class CountriesViewModelTests: XCTestCase {
         wait(for: [expect], timeout: 1.0)
         XCTAssertFalse(sut.isLoading.value)
         XCTAssertEqual(sut.error.value, NetworkError.invalidResponse.description)
+    }
+    
+    func test_didSelectCountry() {
+        // Given
+        let countryMock = Country(capitalName: "Sofia",
+                                  code: "1574",
+                                  flag: "https://bulgarian-flag.com",
+                                  latLng: [111.0, 111.0],
+                                  name: "Bulgaria",
+                                  population: 6800000,
+                                  region: "Southeastern Europe",
+                                  subregion: "random")
+        
+        //When
+        sut.didSelectCountry(country: countryMock)
+        
+        // Then
+        XCTAssertEqual(countriesNavigator.showDetailsCallCount, 1)
+        XCTAssertNotNil(countriesNavigator.receivedCountry)
+        XCTAssertEqual(countriesNavigator.receivedCountry?.capitalName, countryMock.capitalName)
+        XCTAssertEqual(countriesNavigator.receivedCountry?.code, countryMock.code)
+        XCTAssertEqual(countriesNavigator.receivedCountry?.flag, countryMock.flag)
+        XCTAssertEqual(countriesNavigator.receivedCountry?.name, countryMock.name)
+        XCTAssertEqual(countriesNavigator.receivedCountry?.population, countryMock.population)
     }
     
 }

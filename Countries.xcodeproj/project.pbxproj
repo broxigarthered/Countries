@@ -25,6 +25,8 @@
 		3F33B16329CC793900090DB8 /* CountriesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16229CC793900090DB8 /* CountriesFlowCoordinator.swift */; };
 		3F33B16529CC7AD700090DB8 /* ApplicationCoordinatorDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16429CC7AD700090DB8 /* ApplicationCoordinatorDependencyProvider.swift */; };
 		3F33B16729CC7B3100090DB8 /* ApplicationComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16629CC7B3100090DB8 /* ApplicationComponentsFactory.swift */; };
+		3F33B16A29CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */; };
+		3F33B16D29CC7F5D00090DB8 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F33B16C29CC7F5D00090DB8 /* SVGKit */; };
 		3F54009F29C74ADA00E2709A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54009E29C74ADA00E2709A /* AppDelegate.swift */; };
 		3F5400A129C74ADA00E2709A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A029C74ADA00E2709A /* SceneDelegate.swift */; };
 		3F5400A329C74ADA00E2709A /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5400A229C74ADA00E2709A /* CountriesViewController.swift */; };
@@ -83,6 +85,7 @@
 		3F33B16229CC793900090DB8 /* CountriesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesFlowCoordinator.swift; sourceTree = "<group>"; };
 		3F33B16429CC7AD700090DB8 /* ApplicationCoordinatorDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinatorDependencyProvider.swift; sourceTree = "<group>"; };
 		3F33B16629CC7B3100090DB8 /* ApplicationComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationComponentsFactory.swift; sourceTree = "<group>"; };
+		3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationFlowCoordinatorTests.swift; sourceTree = "<group>"; };
 		3F54009B29C74ADA00E2709A /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F54009E29C74ADA00E2709A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F5400A029C74ADA00E2709A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F33B16D29CC7F5D00090DB8 /* SVGKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +185,21 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		3F33B16829CC7D4700090DB8 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3F33B16929CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3F33B16B29CC7F5D00090DB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3F54009229C74ADA00E2709A = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +207,7 @@
 				3F5400B429C74ADC00E2709A /* CountriesTests */,
 				3F5400BE29C74ADC00E2709A /* CountriesUITests */,
 				3F54009C29C74ADA00E2709A /* Products */,
+				3F33B16B29CC7F5D00090DB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +240,7 @@
 		3F5400B429C74ADC00E2709A /* CountriesTests */ = {
 			isa = PBXGroup;
 			children = (
+				3F33B16829CC7D4700090DB8 /* Coordinator */,
 				3F1D7D0629C9C4FF00767E52 /* Countries */,
 				3F1D7D0529C9BF7900767E52 /* API */,
 			);
@@ -368,6 +389,9 @@
 				3F5400B329C74ADC00E2709A /* PBXTargetDependency */,
 			);
 			name = CountriesTests;
+			packageProductDependencies = (
+				3F33B16C29CC7F5D00090DB8 /* SVGKit */,
+			);
 			productName = CountriesTests;
 			productReference = 3F5400B129C74ADC00E2709A /* CountriesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -507,6 +531,7 @@
 				3F5400F029C9249900E2709A /* EndpointTests.swift in Sources */,
 				3F1D7D1429C9FF7300767E52 /* CountriesViewModelTests.swift in Sources */,
 				3F5400EC29C9225700E2709A /* NetworkErrorTests.swift in Sources */,
+				3F33B16A29CC7D6700090DB8 /* ApplicationFlowCoordinatorTests.swift in Sources */,
 				3F1D7D0829C9C51000767E52 /* CountriesAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -865,6 +890,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F1D44CC29CA685700999B87 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
+		};
+		3F33B16C29CC7F5D00090DB8 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F1D44CC29CA685700999B87 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
