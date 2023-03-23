@@ -8,34 +8,84 @@
 import XCTest
 
 final class CountriesUITests: XCTestCase {
-
+    
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        super.setUp()
+        
+        app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    override func tearDownWithError() throws {
+        try super.tearDownWithError()
+        
+        app = nil
     }
+    
+    func testCountriesListDisplayed() {
+        let tableView = app.tables.firstMatch
+        XCTAssertTrue(tableView.exists, "Table view not found")
+        XCTAssertTrue(tableView.cells.element.waitForExistence(timeout: 1.0))
+    }
+    
+    func testTableViewExists() {
+        let tableViewExists = app.tables.firstMatch.waitForExistence(timeout: 1.0)
+        XCTAssertTrue(tableViewExists)
+    }
+    
+    func testNavigationBarExists() {
+        let navigationbarName = "World countries 🇧🇬🇩🇪🇺🇸🇦🇩"
+        let navigationBar = app.navigationBars[navigationbarName]
+        XCTAssertTrue(navigationBar.exists, "Navigation bar does not exists")
+    }
+    
+    func testIfNavigationBarHasSearchField() {
+        let navigationbarName = "World countries 🇧🇬🇩🇪🇺🇸🇦🇩"
+        let searchField = app.navigationBars[navigationbarName].searchFields.firstMatch
+        XCTAssertTrue(searchField.exists, "Search field does not exist in the navigation bar")
+        XCTAssertEqual(searchField.placeholderValue, "Enter at least 3 characters")
+    }
+    
+    func testSearchFunctionality() {
+        let navigationbarName = "World countries 🇧🇬🇩🇪🇺🇸🇦🇩"
+        let searchField = app.navigationBars[navigationbarName].searchFields.firstMatch
+        XCTAssertTrue(searchField.exists, "Search text field not found")
+        
+        let tableView = app.tables.firstMatch.waitForExistence(timeout: 1.0)
+        XCTAssertTrue(tableView)
+        
+        searchField.tap()
+        searchField.typeText("bul")
+        
+        let filteredCells = app.tables.cells
+        XCTAssertTrue(filteredCells.count == 1)
+        app.buttons["Cancel"].tap()
+        XCTAssertEqual(searchField.placeholderValue, "Enter at least 3 characters")
+    }
+    
+    func testCellTap_opens_CountryDetails() {
+        let tableViewExists = app.tables.firstMatch.waitForExistence(timeout: 1.0)
+        XCTAssertTrue(tableViewExists)
+        
+        let tableView = app.tables.firstMatch
+        let cells = tableView.cells.element
+        XCTAssertTrue(cells.accessibilityElementCount() > 0)
+        
+        let firstCell = tableView.cells.firstMatch
+        // taps on China
+        firstCell.tap()
+        
+        let detailViewController = app.navigationBars["China"]
+        XCTAssertTrue(detailViewController.exists, "The Country Details screen is not displayed")
+        
+        XCTAssertTrue(app.staticTexts["Flag"].exists)
+        XCTAssertTrue(app.staticTexts["Map"].exists)
+        XCTAssertTrue(app.staticTexts["Country Name -"].exists)
+        XCTAssertTrue(app.staticTexts["Region -"].exists)
+        XCTAssertTrue(app.staticTexts["Population -"].exists)
+        XCTAssertTrue(app.staticTexts["Capital -"].exists)
+    }
+    
 }

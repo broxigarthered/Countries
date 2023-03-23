@@ -16,6 +16,7 @@
 		3F1D7D1029C9E8FA00767E52 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D0F29C9E8FA00767E52 /* Observable.swift */; };
 		3F1D7D1229C9F5B400767E52 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D1129C9F5B400767E52 /* LoadingView.swift */; };
 		3F1D7D1429C9FF7300767E52 /* CountriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D7D1329C9FF7300767E52 /* CountriesViewModelTests.swift */; };
+		3F327E1929CD06DC006F3B6B /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F327E1829CD06DC006F3B6B /* SVGKit */; };
 		3F33B15729CB146D00090DB8 /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B15629CB146D00090DB8 /* FlowCoordinator.swift */; };
 		3F33B15929CB14D900090DB8 /* ApplicationFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B15829CB14D900090DB8 /* ApplicationFlowCoordinator.swift */; };
 		3F33B15B29CB271D00090DB8 /* CountryDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F33B15A29CB271D00090DB8 /* CountryDetailsViewModel.swift */; };
@@ -144,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F327E1929CD06DC006F3B6B /* SVGKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +456,9 @@
 				3F5400BD29C74ADC00E2709A /* PBXTargetDependency */,
 			);
 			name = CountriesUITests;
+			packageProductDependencies = (
+				3F327E1829CD06DC006F3B6B /* SVGKit */,
+			);
 			productName = CountriesUITests;
 			productReference = 3F5400BB29C74ADC00E2709A /* CountriesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -750,6 +755,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QG78DVQ32Q;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Countries/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -779,6 +785,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QG78DVQ32Q;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Countries/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -844,6 +851,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QG78DVQ32Q;
@@ -854,6 +862,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				TEST_TARGET_NAME = Countries;
 			};
 			name = Debug;
@@ -862,6 +871,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QG78DVQ32Q;
@@ -872,6 +882,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				TEST_TARGET_NAME = Countries;
 			};
 			name = Release;
@@ -938,6 +949,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F1D44CC29CA685700999B87 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
+		};
+		3F327E1829CD06DC006F3B6B /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F1D44CC29CA685700999B87 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
 		};
 		3F33B16C29CC7F5D00090DB8 /* SVGKit */ = {
 			isa = XCSwiftPackageProductDependency;
