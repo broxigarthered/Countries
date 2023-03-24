@@ -11,7 +11,7 @@
  
  ## Previews!
  
- [Uploading ezgif.com-resize.gif…]()
+![ezgif com-resize](https://user-images.githubusercontent.com/14839500/227502106-812ca43d-bb43-4d3c-92d1-c898306de962.gif)
 
 
 ![1](https://user-images.githubusercontent.com/14839500/227490170-84fe73b2-d661-4274-b3d0-bdf453ed5ae2.jpg)
