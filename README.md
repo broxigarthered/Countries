@@ -9,7 +9,10 @@
  - Includes over 27 Unit Tests and 6 UI tests
  - Conforms to modern Swift style guides
  
- ## Previews
+ ## Previews!
+ 
+ [Uploading ezgif.com-resize.gif…]()
+
 
 ![1](https://user-images.githubusercontent.com/14839500/227490170-84fe73b2-d661-4274-b3d0-bdf453ed5ae2.jpg)
 ![2](https://user-images.githubusercontent.com/14839500/227490219-598b46b5-dde1-4c75-ab35-e4416cba797e.jpg)
