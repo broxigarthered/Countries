@@ -92,7 +92,8 @@ class CountryDetailsViewController: UIViewController, SkeletonLoadable {
         
         title = viewModel.country.name
         
-        loadImage(from: URL(string: viewModel.country.flag)!)
+        guard let url = URL(string: viewModel.country.flag) else { return }
+        loadImage(from: url)
     }
     
     private func imageDidLoad(with image: UIImage) {
